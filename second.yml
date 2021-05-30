@@ -1,0 +1,27 @@
+---
+- name: update web1 servers
+  hosts: web1
+
+  tasks:
+  - name: ensure web1 directory is created
+    file:
+      path: /home/centos/web1
+      state: directory
+  - name: ensure file is created
+    file:
+      path: /home/centos/web1/hello.txt
+      state: touch
+
+- name: update web2 servers
+  hosts: web2
+
+  tasks:
+  - name: ensure web2 directory is created
+    file:
+      path: /home/centos/web2
+      state: directory
+  - name: ensure file is created
+    file:
+      path: /home/centos/web2/hey.txt
+      state: touch
+...
