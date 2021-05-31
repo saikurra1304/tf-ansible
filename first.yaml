@@ -5,7 +5,7 @@
   tasks:
   - name: ensure sample directory is created
     file:
-      path: /home/centos/sample
+      path: /home/centos/web-app
       state: directory
 ...
 
