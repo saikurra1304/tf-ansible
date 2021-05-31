@@ -1,0 +1,20 @@
+---
+- name: update web servers
+  hosts: web1
+  become: yes
+
+  tasks:
+  - name: Copy HTTPD config file
+    copy:
+      src: httpd.conf
+      dest: /etc/httpd/conf/httpd.conf
+  - name: ensure setenforce o
+    selinux:
+      policy: targeted
+      state: permissive
+  - name: restart httpd
+    service:
+      name: httpd
+      state: restarted
+...
+

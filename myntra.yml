@@ -1,0 +1,16 @@
+---
+- name: update web servers
+  hosts: web1
+  become: yes
+
+  tasks:
+  - name: ensure git installed
+    package:
+      name: git
+      state: present
+  - name: ensure site is updated
+    git:
+      repo: https://github.com/ravi2krishna/ecomm.git
+      dest: /var/www/html
+...
+
