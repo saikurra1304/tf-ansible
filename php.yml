@@ -1,0 +1,20 @@
+---
+- name: update web servers
+  hosts: web1
+  become: yes
+
+  tasks:
+  - name: Copy Date Code
+    copy:
+      src: date.php
+      dest: /var/www/html/date.php
+  - name: Install PHP
+    package:
+      name: php
+      state: present
+  - name: restart httpd
+    service:
+      name: httpd
+      state: restarted
+...
+

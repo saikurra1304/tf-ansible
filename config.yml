@@ -1,12 +1,14 @@
 ---
 - name: update web servers
-  hosts: web1
+  hosts: web2
   become: yes
+  vars: 
+    http_port: 9090 
 
   tasks:
   - name: Copy HTTPD config file
-    copy:
-      src: httpd.conf
+    template:
+      src: httpd.j2
       dest: /etc/httpd/conf/httpd.conf
   - name: ensure setenforce o
     selinux:
